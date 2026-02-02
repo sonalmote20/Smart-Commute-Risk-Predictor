@@ -1,0 +1,13 @@
+time_of_day,transport,day_type,delay_minutes,risk
+morning,train,weekday,20,high
+morning,bus,weekday,15,medium
+morning,metro,weekday,5,low
+evening,train,weekday,25,high
+evening,bus,weekday,18,medium
+evening,metro,weekday,8,low
+afternoon,train,weekday,10,medium
+afternoon,bus,weekday,7,low
+night,metro,weekday,2,low
+morning,train,weekend,8,low
+evening,bus,weekend,12,medium
+night,bus,weekend,4,low
