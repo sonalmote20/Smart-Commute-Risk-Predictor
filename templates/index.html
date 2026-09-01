@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Commute Risk Predictor</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(120deg, #667eea, #764ba2);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            width: 350px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background: #667eea;
+            border: none;
+            color: white;
+            font-size: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .low {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .high {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        footer {
+            margin-top: 15px;
+            font-size: 11px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🚦 Smart Commute AI</h2>
+    <p>Predict your travel risk before you start</p>
+
+    <form action="/predict-web" method="post">
+
+        <label>Time of Day</label>
+        <select name="time_of_day">
+            <option>morning</option>
+            <option>afternoon</option>
+            <option>evening</option>
+            <option>night</option>
+        </select>
+
+        <label>Transport Mode</label>
+        <select name="transport">
+            <option>train</option>
+            <option>bus</option>
+            <option>metro</option>
+        </select>
+
+        <label>Day Type</label>
+        <select name="day_type">
+            <option>weekday</option>
+            <option>weekend</option>
+        </select>
+
+        <label>Expected Delay (minutes)</label>
+        <input type="number" name="delay_minutes" required>
+
+        <button type="submit">Predict Risk</button>
+    </form>
+
+    {% if result %}
+        <div class="result {{ result }}">
+            Predicted Risk: {{ result | upper }}
+        </div>
+    {% endif %}
+
+    <footer>
+        AI-powered urban mobility assistant
+    </footer>
+</div>
+
+</body>
+</html>
